@@ -1,4 +1,10 @@
-class School {
+interface ISchool {
+  directions: Direction[]
+
+  addDirection(direction: Direction): void
+}
+
+class School implements ISchool {
   directions: Direction[] = []
 
   addDirection(direction: Direction): void {
@@ -6,7 +12,14 @@ class School {
   }
 }
 
-class Direction {
+interface IDirection {
+  levels: Level[]
+  readonly name: string
+
+  addLevel(level: Level): void
+}
+
+class Direction implements IDirection {
   levels: Level[] = []
   private _name: string
 
@@ -23,7 +36,15 @@ class Direction {
   }
 }
 
-class Level {
+interface ILevel {
+  groups: Group[]
+  readonly name: string
+  readonly program: string
+
+  addGroup(group: Group): void
+}
+
+class Level implements ILevel {
   groups: Group[] = []
   private _name: string
   private _program: string
@@ -46,7 +67,16 @@ class Level {
   }
 }
 
-class Group {
+interface IGroup {
+  directionName: string
+  levelName: string
+  readonly students: Student[]
+
+  addStudent(student: Student): void
+  showPerformance(): Student[]
+}
+
+class Group implements IGroup {
   private _students: Student[] = []
 
   constructor(
@@ -72,7 +102,20 @@ class Group {
 }
 
 type Subject = string
-class Student {
+interface IStudent {
+  attendance: boolean[]
+  firstName: string
+  lastName: string
+  birthYear: number
+  fullName: string
+  readonly age: number
+
+  setGrade(subject: Subject, grade: number): void
+  markAttendance(present: boolean): void
+  getPerformanceRating(): number
+}
+
+class Student implements IStudent {
   grades: Record<Subject, number> = {}
   attendance: boolean[] = []
 
