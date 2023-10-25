@@ -1,30 +1,26 @@
-interface ISchool {
-  directions: Direction[]
-
-  addDirection(direction: Direction): void
-}
+import type {
+  ISchool,
+  IDirection,
+  ILevel,
+  IGroup,
+  IStudent,
+  Subject,
+} from './types'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-class School implements ISchool {
-  directions: Direction[] = []
+export class School implements ISchool {
+  directions: ISchool['directions'] = []
 
-  addDirection(direction: Direction): void {
+  addDirection(direction: IDirection): void {
     this.directions.push(direction)
   }
 }
 
-interface IDirection {
-  levels: Level[]
-  readonly name: string
-
-  addLevel(level: Level): void
-}
-
-class Direction implements IDirection {
-  levels: Level[] = []
+export class Direction implements IDirection {
+  levels: IDirection['levels'] = []
   private _name: string
 
-  constructor(name: string) {
+  constructor(name: IDirection['name']) {
     this._name = name
   }
 
@@ -32,25 +28,17 @@ class Direction implements IDirection {
     return this._name
   }
 
-  addLevel(level: Level): void {
+  addLevel(level: ILevel): void {
     this.levels.push(level)
   }
 }
 
-interface ILevel {
-  groups: Group[]
-  readonly name: string
-  readonly program: string
+export class Level implements ILevel {
+  groups: ILevel['groups'] = []
+  private _name: ILevel['name']
+  private _program: ILevel['program']
 
-  addGroup(group: Group): void
-}
-
-class Level implements ILevel {
-  groups: Group[] = []
-  private _name: string
-  private _program: string
-
-  constructor(name: string, program: string) {
+  constructor(name: ILevel['name'], program: ILevel['program']) {
     this._name = name
     this._program = program
   }
@@ -63,37 +51,28 @@ class Level implements ILevel {
     return this._program
   }
 
-  addGroup(group: Group): void {
+  addGroup(group: IGroup): void {
     this.groups.push(group)
   }
 }
 
-interface IGroup {
-  directionName: string
-  levelName: string
-  readonly students: Student[]
-
-  addStudent(student: Student): void
-  showPerformance(): Student[]
-}
-
-class Group implements IGroup {
-  private _students: Student[] = []
+export class Group implements IGroup {
+  private _students: IStudent[] = []
 
   constructor(
-    public directionName: string,
-    public levelName: string,
+    public directionName: IGroup['directionName'],
+    public levelName: IGroup['levelName'],
   ) {}
 
-  get students(): Student[] {
+  get students(): IStudent[] {
     return this._students
   }
 
-  addStudent(student: Student): void {
+  addStudent(student: IStudent): void {
     this._students.push(student)
   }
 
-  showPerformance(): Student[] {
+  showPerformance(): IStudent[] {
     const sortedStudents = this.students.toSorted(
       (a, b) => b.getPerformanceRating() - a.getPerformanceRating(),
     )
@@ -102,28 +81,14 @@ class Group implements IGroup {
   }
 }
 
-type Subject = string
-interface IStudent {
-  attendance: boolean[]
-  firstName: string
-  lastName: string
-  birthYear: number
-  fullName: string
-  readonly age: number
-
-  setGrade(subject: Subject, grade: number): void
-  markAttendance(present: boolean): void
-  getPerformanceRating(): number
-}
-
-class Student implements IStudent {
-  grades: Record<Subject, number> = {}
-  attendance: boolean[] = []
+export class Student implements IStudent {
+  grades: IStudent['grades'] = {}
+  attendance: IStudent['attendance'] = []
 
   constructor(
-    public firstName: string,
-    public lastName: string,
-    public birthYear: number,
+    public firstName: IStudent['firstName'],
+    public lastName: IStudent['lastName'],
+    public birthYear: IStudent['birthYear'],
   ) {}
 
   get fullName(): string {
