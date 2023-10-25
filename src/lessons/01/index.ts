@@ -19,7 +19,7 @@ export class Direction implements IDirection {
   levels: ILevel[] = []
   private _name: string
 
-  constructor(name: IDirection['name']) {
+  constructor(name: string) {
     this._name = name
   }
 
@@ -34,10 +34,10 @@ export class Direction implements IDirection {
 
 export class Level implements ILevel {
   groups: IGroup[] = []
-  private _name: ILevel['name']
-  private _program: ILevel['program']
+  private _name: string
+  private _program: string
 
-  constructor(name: ILevel['name'], program: ILevel['program']) {
+  constructor(name: string, program: string) {
     this._name = name
     this._program = program
   }
@@ -59,8 +59,8 @@ export class Group implements IGroup {
   private _students: IStudent[] = []
 
   constructor(
-    public directionName: IGroup['directionName'],
-    public levelName: IGroup['levelName'],
+    public directionName: string,
+    public levelName: string,
   ) {}
 
   get students(): IStudent[] {
@@ -81,13 +81,13 @@ export class Group implements IGroup {
 }
 
 export class Student implements IStudent {
-  grades: IStudent['grades'] = {}
-  attendance: IStudent['attendance'] = []
+  grades: Record<Subject, number> = {}
+  attendance: boolean[] = []
 
   constructor(
-    public firstName: IStudent['firstName'],
-    public lastName: IStudent['lastName'],
-    public birthYear: IStudent['birthYear'],
+    public firstName: string,
+    public lastName: string,
+    public birthYear: number,
   ) {}
 
   get fullName(): string {
