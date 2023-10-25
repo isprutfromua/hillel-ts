@@ -1,7 +1,7 @@
 class School {
-  directions = []
+  directions: Direction[] = []
 
-  addDirection(direction) {
+  addDirection(direction: Direction) {
     this.directions.push(direction)
   }
 }
