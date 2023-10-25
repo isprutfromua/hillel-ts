@@ -4,6 +4,7 @@ interface ISchool {
   addDirection(direction: Direction): void
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 class School implements ISchool {
   directions: Direction[] = []
 
