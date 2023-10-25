@@ -73,13 +73,13 @@ class Group {
 
 type Subject = string
 class Student {
-  private grades: Record<Subject, number> = {}
-  private attendance: boolean[] = []
+  grades: Record<Subject, number> = {}
+  attendance: boolean[] = []
 
   constructor(
-    private firstName: string,
-    private lastName: string,
-    private birthYear: number,
+    public firstName: string,
+    public lastName: string,
+    public birthYear: number,
   ) {}
 
   get fullName(): string {
