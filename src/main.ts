@@ -44,22 +44,22 @@ class Level {
 }
 
 class Group {
-  _students = []
+  private _students: Student[] = []
 
-  get students() {
+  constructor(
+    private directionName: string,
+    private levelName: string,
+  ) {}
+
+  get students(): Student[] {
     return this._students
   }
 
-  constructor(directionName, levelName) {
-    this.directionName = directionName
-    this.levelName = levelName
-  }
-
-  addStudent(student) {
+  public addStudent(student: Student): void {
     this._students.push(student)
   }
 
-  showPerformance() {
+  public showPerformance(): Student[] {
     const sortedStudents = this.students.toSorted(
       (a, b) => b.getPerformanceRating() - a.getPerformanceRating(),
     )
