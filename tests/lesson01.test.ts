@@ -1,4 +1,4 @@
-import { School, Direction, Level, Group, Student } from './main'
+import { School, Direction, Level, Group, Student } from '@/lessons/01'
 
 describe('School', () => {
   it('should create a new school and add a direction', () => {

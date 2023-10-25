@@ -1,12 +1,11 @@
-import type {
+import {
   ISchool,
   IDirection,
   ILevel,
   IGroup,
   IStudent,
   Subject,
-} from './types'
-
+} from '@type/lesson01'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export class School implements ISchool {
   directions: IDirection[] = []
