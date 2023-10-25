@@ -68,17 +68,18 @@ class Group {
   }
 }
 
+type Subject = string
 class Student {
-  grades = {}
-  attendance = []
+  private grades: Record<Subject, number> = {}
+  private attendance: boolean[] = []
 
-  constructor(firstName, lastName, birthYear) {
-    this.firstName = firstName
-    this.lastName = lastName
-    this.birthYear = birthYear
-  }
+  constructor(
+    private firstName: string,
+    private lastName: string,
+    private birthYear: number,
+  ) {}
 
-  get fullName() {
+  get fullName(): string {
     return `${this.lastName} ${this.firstName}`
   }
 
@@ -86,19 +87,19 @@ class Student {
     ;[this.lastName, this.firstName] = value.split(' ')
   }
 
-  get age() {
+  get age(): number {
     return new Date().getFullYear() - this.birthYear
   }
 
-  setGrade(subject, grade) {
+  public setGrade(subject: Subject, grade: number): void {
     this.grades[subject] = grade
   }
 
-  markAttendance(present) {
+  public markAttendance(present: boolean): void {
     this.attendance.push(present)
   }
 
-  getPerformanceRating() {
+  public getPerformanceRating(): number {
     const gradeValues = Object.values(this.grades)
 
     if (gradeValues.length === 0) return 0
