@@ -9,7 +9,7 @@ import type {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export class School implements ISchool {
-  directions: ISchool['directions'] = []
+  directions: IDirection[] = []
 
   addDirection(direction: IDirection): void {
     this.directions.push(direction)
@@ -17,7 +17,7 @@ export class School implements ISchool {
 }
 
 export class Direction implements IDirection {
-  levels: IDirection['levels'] = []
+  levels: ILevel[] = []
   private _name: string
 
   constructor(name: IDirection['name']) {
@@ -34,7 +34,7 @@ export class Direction implements IDirection {
 }
 
 export class Level implements ILevel {
-  groups: ILevel['groups'] = []
+  groups: IGroup[] = []
   private _name: ILevel['name']
   private _program: ILevel['program']
 
