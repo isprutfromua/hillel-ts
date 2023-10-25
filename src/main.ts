@@ -24,7 +24,7 @@ class Direction {
 }
 
 class Level {
-  private groups: Group[] = []
+  groups: Group[] = []
   private _name: string
   private _program: string
 
