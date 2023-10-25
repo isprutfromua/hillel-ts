@@ -58,11 +58,11 @@ class Group {
     return this._students
   }
 
-  public addStudent(student: Student): void {
+  addStudent(student: Student): void {
     this._students.push(student)
   }
 
-  public showPerformance(): Student[] {
+  showPerformance(): Student[] {
     const sortedStudents = this.students.toSorted(
       (a, b) => b.getPerformanceRating() - a.getPerformanceRating(),
     )
@@ -94,15 +94,15 @@ class Student {
     return new Date().getFullYear() - this.birthYear
   }
 
-  public setGrade(subject: Subject, grade: number): void {
+  setGrade(subject: Subject, grade: number): void {
     this.grades[subject] = grade
   }
 
-  public markAttendance(present: boolean): void {
+  markAttendance(present: boolean): void {
     this.attendance.push(present)
   }
 
-  public getPerformanceRating(): number {
+  getPerformanceRating(): number {
     const gradeValues = Object.values(this.grades)
 
     if (gradeValues.length === 0) return 0
