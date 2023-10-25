@@ -1,3 +1,5 @@
+import { Subject } from '@type/lesson01'
+
 export interface IStudent {
   grades: Record<Subject, number>
   attendance: boolean[]
@@ -11,4 +13,3 @@ export interface IStudent {
   markAttendance(present: boolean): void
   getPerformanceRating(): number
 }
-export type Subject = string
