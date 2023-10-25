@@ -7,17 +7,18 @@ class School {
 }
 
 class Direction {
-  levels = []
+  levels: Level[] = []
+  private _name: string
 
-  get name() {
-    return this._name
-  }
-
-  constructor(name) {
+  constructor(name: string) {
     this._name = name
   }
 
-  addLevel(level) {
+  get name(): string {
+    return this._name
+  }
+
+  addLevel(level: Level): void {
     this.levels.push(level)
   }
 }
