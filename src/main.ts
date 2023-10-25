@@ -23,22 +23,24 @@ class Direction {
 }
 
 class Level {
-  groups = []
+  private groups: Group[] = []
+  private _name: string
+  private _program: string
 
-  constructor(name, program) {
-    this.name = name
+  constructor(name: string, program: string) {
+    this._name = name
     this._program = program
   }
 
-  get name() {
+  get name(): string {
     return this._name
   }
 
-  get program() {
+  get program(): string {
     return this._program
   }
 
-  addGroup(group) {
+  addGroup(group: Group): void {
     this.groups.push(group)
   }
 }
