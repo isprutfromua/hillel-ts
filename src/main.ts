@@ -50,8 +50,8 @@ class Group {
   private _students: Student[] = []
 
   constructor(
-    private directionName: string,
-    private levelName: string,
+    public directionName: string,
+    public levelName: string,
   ) {}
 
   get students(): Student[] {
