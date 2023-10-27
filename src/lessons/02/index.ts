@@ -1,3 +1,5 @@
+import { SortableArray } from '@/helpers'
+
 class School {
   // implement 'add area', 'remove area', 'add lecturer', and 'remove lecturer' methods
 
@@ -40,11 +42,12 @@ class Group {
 
   _area
   _status
-  _students = [] // Modify the array so that it has a valid toSorted method*
+  _students: SortableArray<Student> = [] // Modify the array so that it has a valid toSorted method*
 
   constructor(directionName, levelName) {
     this.directionName = directionName
     this.levelName = levelName
+    this._students = new SortableArray<Student>()
   }
 
   showPerformance() {
