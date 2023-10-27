@@ -3,7 +3,8 @@
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    // added "ES2023.Array" to avoid TS errors with toSorted array method
+    "lib": ["ES2020", "DOM", "DOM.Iterable", "ES2023.Array"],
     "skipLibCheck": true,
 
     /* Bundler mode */
@@ -17,7 +18,12 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@type/*": ["src/types/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", "tests"]
 }
