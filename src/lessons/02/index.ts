@@ -42,7 +42,7 @@ class Group {
 
   _area
   _status
-  _students: SortableArray<Student> = [] // Modify the array so that it has a valid toSorted method*
+  _students: SortableArray<Student> = []
 
   constructor(directionName, levelName) {
     this.directionName = directionName
