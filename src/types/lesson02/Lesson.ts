@@ -1,0 +1,13 @@
+export type Lesson =
+  | 'Algebra'
+  | 'Biology'
+  | 'Chemistry'
+  | 'Earth'
+  | 'Economics'
+  | 'Geography'
+  | 'Geometry'
+  | 'Literature'
+  | 'Physics'
+  | 'Speech'
+  | 'Statistics'
+  | 'Writing'
