@@ -1,4 +1,6 @@
 /*
+  Can be used as well:
+
   Academic grading in the United States
   A+, A, A−, B+, B, B−, C+, C, C−, D+, D, D−, and F
 
