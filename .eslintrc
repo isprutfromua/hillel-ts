@@ -5,4 +5,19 @@
   ],
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"
   ],
+  "rules": {
+    "lines-between-class-members": [
+      "error",
+      {
+        "enforce": [
+          { "blankLine": "always", "prev": "method", "next": "method" }
+        ]
+      },
+  ],
+    "padding-line-between-statements": [
+      "error",
+      {"blankLine": "always", "prev": "*", "next": "export"},
+      {"blankLine": "never", "prev": "export", "next": "export"},
+    ]
+  }
 }

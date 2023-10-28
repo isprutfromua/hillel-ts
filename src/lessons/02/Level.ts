@@ -9,6 +9,7 @@ type EditableFieldsList = {
   group: Group
 }
 type ILevel = ClassBuilder<EditableFieldsList> & Readonly<StaticFields>
+
 export class Level implements ILevel {
   private _groups: Group[] = []
 
