@@ -23,11 +23,9 @@
 type Adders<T> = {
   [K in keyof T & string as `add${Capitalize<K>}`]: (value: T[K]) => void
 }
-
 type Removers<T> = {
   [K in keyof T & string as `remove${Capitalize<K>}`]: (value: T[K]) => void
 }
-
 type Collections<T> = {
   [K in keyof T & string as `${K}s`]: Array<T[K]>
 }
