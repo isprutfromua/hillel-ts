@@ -18,15 +18,15 @@ export class Area implements IArea {
     return this._name
   }
 
-  get levels() {
+  get levels(): Level[] {
     return this._levels
   }
 
-  addLevel(level: Level) {
+  addLevel(level: Level): void {
     this._levels.push(level)
   }
 
-  removeLevel(level: Level) {
+  removeLevel(level: Level): void {
     this._levels = this._levels.filter(l => l !== level)
   }
 }

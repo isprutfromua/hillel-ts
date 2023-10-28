@@ -19,19 +19,19 @@ export class School implements ISchool {
     return this._lecturers
   }
 
-  addArea(area: Area) {
+  addArea(area: Area): void {
     this._areas.push(area)
   }
 
-  addLecturer(lecturer: Lecturer) {
+  addLecturer(lecturer: Lecturer): void {
     this._lecturers.push(lecturer)
   }
 
-  removeArea(area: Area) {
+  removeArea(area: Area): void {
     this._areas = this._areas.filter(a => a !== area)
   }
 
-  removeLecturer(lecturer: Lecturer) {
+  removeLecturer(lecturer: Lecturer): void {
     this._lecturers = this._lecturers.filter(l => l !== lecturer)
   }
 }
