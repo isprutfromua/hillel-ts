@@ -40,7 +40,9 @@ export class Group implements IGroup {
   }
 
   removeStudent(student: Student): void {
-    this._students = this._students.filter(s => s !== student)
+    this._students = this._students.filter(
+      s => s !== student,
+    ) as SortableArray<Student>
   }
 
   setStatus(status: Status): void {
