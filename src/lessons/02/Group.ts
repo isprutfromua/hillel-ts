@@ -40,6 +40,10 @@ export class Group implements IGroup {
   }
 
   removeStudent(student: Student): void {
+    // any idea why have an error here?
+    // Property 'toSorted' is missing in type 'Student[]' but required in type 'SortableArray<Student>'
+    // but in real scenario after filtering we will get SortableArray after filtering, not plain Array
+
     this._students = this._students.filter(
       s => s !== student,
     ) as SortableArray<Student>
