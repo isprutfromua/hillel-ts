@@ -1,0 +1,6 @@
+export * from './Area.ts'
+export * from './Group.ts'
+export * from './Lecturer.ts'
+export * from './Level.ts'
+export * from './School.ts'
+export * from './Student.ts'
