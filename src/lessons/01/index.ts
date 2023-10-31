@@ -6,6 +6,7 @@ import {
   IStudent,
   Subject,
 } from '@type/lesson01'
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export class School implements ISchool {
   directions: IDirection[] = []
@@ -14,9 +15,9 @@ export class School implements ISchool {
     this.directions.push(direction)
   }
 }
-
 export class Direction implements IDirection {
   levels: ILevel[] = []
+
   private _name: string
 
   constructor(name: string) {
@@ -31,10 +32,11 @@ export class Direction implements IDirection {
     this.levels.push(level)
   }
 }
-
 export class Level implements ILevel {
   groups: IGroup[] = []
+
   private _name: string
+
   private _program: string
 
   constructor(name: string, program: string) {
@@ -54,7 +56,6 @@ export class Level implements ILevel {
     this.groups.push(group)
   }
 }
-
 export class Group implements IGroup {
   private _students: IStudent[] = []
 
@@ -79,9 +80,9 @@ export class Group implements IGroup {
     return sortedStudents
   }
 }
-
 export class Student implements IStudent {
   grades: Record<Subject, number> = {}
+
   attendance: boolean[] = []
 
   constructor(
