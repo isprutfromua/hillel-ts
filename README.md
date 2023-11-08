@@ -25,10 +25,10 @@ TS-001:ADD Basic project structure
 
 ## Course Progress
 
-- ✅ Understanding the TypeScript Type System
-- ✅ TypeScript Primitive Types
-- [ ] Object Typing and Type Aliases
-- [ ] Interfaces
+- [X] Understanding the TypeScript Type System
+- [X] TypeScript Primitive Types
+- [X] Object Typing and Type Aliases
+- [X] Interfaces
 - [ ] Classes
 - [ ] Type Inference and Type Guards
 - [ ] Generics and Type Parameter Constraints
