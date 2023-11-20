@@ -1,7 +1,6 @@
-import { Organization } from '../interfaces/Organization'
-import { Accounting } from './Accounting'
-import { Department } from './Department'
-import { Domain } from '../models/Domain'
+import { Accounting, Department } from '../classes'
+import { Organization } from '../interfaces'
+import { Domain } from '../models'
 
 export class Company implements Organization {
   #departments: Set<Department> = new Set()

@@ -1,5 +1,4 @@
-import { FinanceInfo } from '../interfaces/FinanceInfo'
-import { PersonalInfo } from '../interfaces/PersonalInfo'
+import { FinanceInfo, PersonalInfo } from '../interfaces'
 
 export abstract class Person implements PersonalInfo, FinanceInfo {
   #bankAccount: string

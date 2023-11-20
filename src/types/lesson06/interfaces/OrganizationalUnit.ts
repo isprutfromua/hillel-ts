@@ -1,8 +1,6 @@
-import { Contractor } from '../classes/Contractor'
-import { Trainee } from '../classes/Trainee'
-import { Budget } from '../models/Budget'
-import { FinanceInfo } from './FinanceInfo'
-import { PersonalInfo } from './PersonalInfo'
+import { PersonalInfo, FinanceInfo } from '../interfaces'
+import { Contractor, Trainee } from '../classes'
+import { Budget } from '../models'
 
 export type Employee = Contractor | Trainee
 export type EmployeeData = PersonalInfo & FinanceInfo

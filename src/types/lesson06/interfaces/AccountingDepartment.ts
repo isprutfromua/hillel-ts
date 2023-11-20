@@ -1,5 +1,5 @@
 import { Employee } from './OrganizationalUnit'
-import { Department } from '../classes/Department'
+import { Department } from '../classes'
 
 export interface AccountingDepartment {
   balance: number

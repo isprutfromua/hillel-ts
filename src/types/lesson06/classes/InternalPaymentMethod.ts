@@ -1,4 +1,4 @@
-import { PaymentProvider } from '../abstractions/PaymentProvider'
+import { PaymentProvider } from '../abstractions'
 
 export class InternalPaymentMethod extends PaymentProvider {
   static #instance: InternalPaymentMethod

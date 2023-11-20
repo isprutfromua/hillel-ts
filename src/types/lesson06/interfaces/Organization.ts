@@ -1,5 +1,5 @@
-import { Department } from '../classes/Department'
-import { Domain } from '../models/Domain'
+import { Department } from '../classes'
+import { Domain } from '../models'
 
 export interface Organization {
   readonly name: string

@@ -1,17 +1,13 @@
 import { getRandomID } from '@/helpers/functions'
-import { Contractor } from '../classes/Contractor'
-import { WorkerDepartmentInfo } from '../interfaces/WorkerDepartmentInfo'
-import {
-  Employee,
-  EmployeeData,
-  OrganizationalUnit,
-} from '../interfaces/OrganizationalUnit'
+import { Contractor, Trainee } from '.'
 import { isContractor } from '../helpers'
-import { Budget } from '../models/Budget'
-import { Domain } from '../models/Domain'
-import { AccountingSubject } from '../interfaces/AccountingSubject'
-import { EmployeeStatus } from '../models/EmployeeStatus'
-import { Trainee } from './Trainee'
+import {
+  OrganizationalUnit,
+  AccountingSubject,
+  WorkerDepartmentInfo,
+} from '../interfaces'
+import { Employee, EmployeeData } from '../interfaces/OrganizationalUnit'
+import { Budget, Domain, EmployeeStatus } from '../models'
 
 export class Department implements OrganizationalUnit, AccountingSubject {
   public accountingID?: number

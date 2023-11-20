@@ -1,4 +1,4 @@
-import { PaymentMethodInfo as PaymentProviderInfo } from '../interfaces/PaymentMethodInfo'
+import { PaymentProviderInfo } from '../interfaces'
 
 export abstract class PaymentProvider implements PaymentProviderInfo {
   constructor(public name: string) {}

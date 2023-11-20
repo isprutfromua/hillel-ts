@@ -1,12 +1,14 @@
 import { getRandomID } from '@/helpers/functions'
-import { ExternalPaymentMethod } from './ExternalPaymentMethod'
-import { InternalPaymentMethod } from './InternalPaymentMethod'
+import {
+  Department,
+  InternalPaymentMethod,
+  ExternalPaymentMethod,
+  Contractor,
+  Trainee,
+} from '.'
+import { AccountingDepartment } from '../interfaces'
 import { Employee } from '../interfaces/OrganizationalUnit'
-import { Domain } from '../models/Domain'
-import { Contractor } from './Contractor'
-import { Department } from './Department'
-import { Trainee } from './Trainee'
-import { AccountingDepartment } from '../interfaces/AccountingDepartment'
+import { Domain } from '../models'
 
 export class Accounting extends Department implements AccountingDepartment {
   public name: string = 'accounting'

@@ -1,7 +1,9 @@
-import { Person } from './Person'
-import { WorkerInfo } from '../interfaces/WorkerInfo'
-import { WorkerDepartmentInfo } from '../interfaces/WorkerDepartmentInfo'
-import { AccountingSubject } from '../interfaces/AccountingSubject'
+import { Person } from '.'
+import {
+  WorkerInfo,
+  AccountingSubject,
+  WorkerDepartmentInfo,
+} from '../interfaces'
 
 export abstract class Worker
   extends Person
