@@ -1,17 +1,27 @@
-import { Trainee } from '@/types/lesson06/classes/Trainee'
-import { Contractor } from '@/types/lesson06/classes/Contractor'
-import { faker } from '@faker-js/faker'
+import { getPerson } from '@/helpers/functions'
+import { Company } from '@/types/lesson06/classes/Company'
 
-const cont1 = new Contractor(
-  faker.person.firstName(),
-  faker.person.lastName(),
-  faker.finance.accountNumber({ length: 20 }),
-)
-const tr1 = new Trainee(
-  faker.person.firstName(),
-  faker.person.lastName(),
-  faker.finance.accountNumber({ length: 20 }),
-)
+function initCompany() {
+  const company = new Company('Hire development')
 
-console.log(cont1.bankAccount)
-console.log(tr1.salary)
+  const HRDepartment = company.openDepartment('HR', 'human resources')
+  const FEDepartment = company.openDepartment('FE', 'development')
+  const DEVDepartment = company.openDepartment('BE', 'development')
+
+  HRDepartment.hireEmployee(getPerson())
+
+  FEDepartment.hireEmployee(getPerson())
+  FEDepartment.hireEmployee(getPerson())
+
+  DEVDepartment.hireEmployee(getPerson())
+  DEVDepartment.hireEmployee(getPerson())
+  DEVDepartment.hireEmployee(getPerson())
+
+  company.paySalaries()
+
+  HRDepartment.releaseEmployees()
+  DEVDepartment.releaseEmployees()
+  FEDepartment.releaseEmployees()
+}
+
+initCompany()
