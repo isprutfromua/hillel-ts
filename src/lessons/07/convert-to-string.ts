@@ -1,9 +1,9 @@
 export function convertToString<T>(input: T): string | undefined {
   if (input && typeof input.toString === 'function') {
     return input.toString()
-  } else {
-    return undefined
   }
+
+  return undefined
 }
 
 convertToString<number>(3)
