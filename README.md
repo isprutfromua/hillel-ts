@@ -29,9 +29,9 @@ TS-001:ADD Basic project structure
 - [X] TypeScript Primitive Types
 - [X] Object Typing and Type Aliases
 - [X] Interfaces
-- [ ] Classes
-- [ ] Type Inference and Type Guards
-- [ ] Generics and Type Parameter Constraints
+- [X] Classes
+- [X] Type Inference and Type Guards
+- [X] Generics and Type Parameter Constraints
 - [ ] `keyof` Operator and Mapped Types
 - [ ] Conditional Types
 - [ ] Decorators
