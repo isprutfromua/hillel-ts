@@ -16,7 +16,7 @@ let newUser: TPick<User, "name" | "age";
 
 export type TPick1<T, K extends keyof T> = { [k in K]: T[k] }
 export type TPick2<T, K extends keyof T> = {
-  [key in keyof T as key extends K ? key : never]: T[key]
+  [k in keyof T as k extends K ? k : never]: T[k]
 }
 export type TPick3<T, K extends keyof T> = {
   [k in keyof T & K]: T[k]
