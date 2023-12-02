@@ -14,21 +14,16 @@ let newUser: TPick<User, "name" | "age";
 
  */
 
-export type TPickRecord<T, K extends keyof T> = Record<K, T[K]>
-export type TPickIntersection<T, K extends keyof T> = {
-  [key in keyof T & K]: T[K]
-}
 export type TPickAs<T, K extends keyof T> = {
   [key in keyof T as key extends K ? key : never]: T[key]
 }
 
 type User = {
-  firstName: string
+  name: string
   age: number
-  lastName: string
+  permission: string[]
 }
 
-export type TUserFirstName = TPickRecord<User, 'firstName'>
-export type TUserFirstName2 = TPickIntersection<User, 'firstName'>
-export type TUserFirstName3 = TPickAs<User, 'firstName'>
-export type TUserFirstName4 = Pick<User, 'firstName'>
+type UserWithoutPermissions = keyof Omit<User, 'permission'>
+
+export type TUserWithoutPermissions = TPickAs<User, UserWithoutPermissions>
