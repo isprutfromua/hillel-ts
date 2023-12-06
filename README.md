@@ -32,8 +32,8 @@ TS-001:ADD Basic project structure
 - [X] Classes
 - [X] Type Inference and Type Guards
 - [X] Generics and Type Parameter Constraints
-- [ ] `keyof` Operator and Mapped Types
-- [ ] Conditional Types
+- [X] `keyof` Operator and Mapped Types
+- [X] Conditional Types
 - [ ] Decorators
 - [ ] TypeScript Basics of Object-Oriented Programming (OOP)
 - [ ] Software Design Principles and their Application
