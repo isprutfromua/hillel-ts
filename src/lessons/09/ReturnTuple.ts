@@ -13,6 +13,7 @@ type TReturnTuple<T extends (arg: any) => unknown> = T extends (
   ? [R, U]
   : unknown
 
+// tests
 function func1(a: number[]): number {
   return 0
 }

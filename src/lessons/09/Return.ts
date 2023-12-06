@@ -12,6 +12,7 @@ type TReturn<T extends (...args: any) => unknown> = T extends (
   ? R
   : never
 
+// tests
 function func1(a: number[]): number {
   return 0
 }
