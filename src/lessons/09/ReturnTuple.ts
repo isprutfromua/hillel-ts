@@ -8,10 +8,10 @@
 import { Equal, Expect } from '@/helpers/type-checkers'
 
 type TReturnTuple<T extends (arg: any) => unknown> = T extends (
-  arg: infer U,
+  param: infer P,
 ) => infer R
-  ? [R, U]
-  : unknown
+  ? [R, P]
+  : never
 
 // tests
 function func1(a: number[]): number {
