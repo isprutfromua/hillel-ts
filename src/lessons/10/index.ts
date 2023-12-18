@@ -57,7 +57,7 @@ class TestService {
   }
 
   @Catch
-  randomErrors(): string | void {
+  getRandomError(): string | void {
     if (Math.random() * 1e4 > 5e3) {
       throw new RangeError(`Big number`)
     } else {
@@ -68,4 +68,4 @@ class TestService {
 
 const tester = new TestService()
 console.log(tester.findSomeError())
-console.log(tester.randomErrors())
+console.log(tester.getRandomError())
