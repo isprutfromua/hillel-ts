@@ -13,6 +13,17 @@
  * На виклику методу getUsers у консоль має вивестись повідомлення
  * "Oops, there is an error in getUsers: No users"
  * */
+function logError(
+  message: string | unknown,
+  type?: string,
+  method?: string,
+): void {
+  if (!type && !method) {
+    console.error(message)
+  } else {
+    console.error(`Oops, there is ${type} error in ${method}:` + message)
+  }
+}
 
 const Catch = <T, A extends unknown[], R>(
   originalMethod: (...args: unknown[]) => R,
@@ -25,16 +36,13 @@ const Catch = <T, A extends unknown[], R>(
     try {
       return originalMethod.apply(this, args)
     } catch (e) {
+      const methodName = String(context.name)
       if (e instanceof RangeError) {
-        console.error(
-          `Oops, there is a range error in ${String(context.name)}: ${
-            e.message
-          }`,
-        )
+        logError(e.message, 'range', methodName)
+      } else if (typeof e === 'string') {
+        logError(e, 'custom', methodName)
       } else {
-        console.error(
-          `Oops, there is unrecognized error in ${String(context.name)}: ${e}`,
-        )
+        logError(e)
       }
     }
   }
