@@ -18,7 +18,7 @@ function logError(
   type?: string,
   method?: string,
 ): void {
-  if (!type && !method) {
+  if (!type || !method) {
     console.error(message)
   } else {
     console.error(`Oops, there is ${type} error in ${method}:` + message)
