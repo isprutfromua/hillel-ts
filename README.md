@@ -34,9 +34,9 @@ TS-001:ADD Basic project structure
 - [X] Generics and Type Parameter Constraints
 - [X] `keyof` Operator and Mapped Types
 - [X] Conditional Types
-- [ ] Decorators
-- [ ] TypeScript Basics of Object-Oriented Programming (OOP)
-- [ ] Software Design Principles and their Application
+- [X] Decorators
+- [X] TypeScript Basics of Object-Oriented Programming (OOP)
+- [X] Software Design Principles and their Application
 - [ ] Programming Patterns: Implementing Patterns in TypeScript
 - [ ] Fundamentals and Principles of Testing
 
