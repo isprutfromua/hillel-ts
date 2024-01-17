@@ -38,4 +38,13 @@ export class Zoo implements IZoo {
       }
     })
   }
+
+  assignNewAnimal(kind: string) {
+    const newAnimal = this.administration.requestAnimal(this.animalsCare, kind)
+
+    if (newAnimal) {
+      this.accounting.assignAnimal(newAnimal)
+      this.marketing.notifyClients('We got a new animal:' + newAnimal.name)
+    }
+  }
 }
