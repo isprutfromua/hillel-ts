@@ -17,7 +17,7 @@ export class Zoo implements IZoo {
     this.accounting = new Accounting('Accounting', 1_000_000)
     this.administration = new Administration('Administration')
     this.animalsCare = new AnimalsCare('Animals Care')
-    this.marketing = new Marketing('Marketing')
+    this.marketing = Marketing.getCompany()
     this.payOffice = new PayOffice('Pay Office')
 
     // Hire employees for each department
