@@ -1,14 +1,11 @@
-import { Person } from '.'
+import { Person } from '../abstractions'
 import {
-  WorkerInfo,
   AccountingSubject,
   WorkerDepartmentInfo,
+  WorkerInfo,
 } from '../interfaces'
 
-export abstract class Worker
-  extends Person
-  implements WorkerInfo, AccountingSubject
-{
+export class Worker extends Person implements WorkerInfo, AccountingSubject {
   public salary = 0
   public department: WorkerDepartmentInfo | null = null
   public accountingID?: number

@@ -2,8 +2,8 @@ import { getRandomID } from '@/helpers/functions'
 import { Contractor, Trainee } from '.'
 import { isContractor } from '../helpers'
 import {
-  OrganizationalUnit,
   AccountingSubject,
+  OrganizationalUnit,
   WorkerDepartmentInfo,
 } from '../interfaces'
 import { Employee, EmployeeData } from '../interfaces/OrganizationalUnit'
@@ -27,7 +27,7 @@ export class Department implements OrganizationalUnit, AccountingSubject {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       (acc, [_, employee]) => {
         const employeeFullName = `${employee.name} ${employee.surname}`
-        if (employee instanceof Contractor) {
+        if (isContractor(employee)) {
           acc.contractors.push(employeeFullName)
         } else {
           acc.trainees.push(employeeFullName)
@@ -108,7 +108,7 @@ export class Department implements OrganizationalUnit, AccountingSubject {
       return
     }
 
-    if (employee instanceof Contractor) {
+    if (isContractor(employee)) {
       console.log(
         `${this.name} Department: Employee is contractor. No needs to change`,
       )
