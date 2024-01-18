@@ -1,6 +1,7 @@
 import { Accounting, Department } from '../classes'
 import { Organization } from '../interfaces'
 import { Domain } from '../models'
+import { EmployeeObserver } from '@type/lesson06/interfaces/EmployeeObserver.ts'
 
 export class Company implements Organization {
   #departments: Set<Department> = new Set()
@@ -27,13 +28,12 @@ export class Company implements Organization {
   openDepartment(name: string, domain: Domain): Department {
     const department = new Department(name, domain)
 
-    department.setOnHireCallback(employee => {
-      this.#accounting.addToBalance(employee)
-    })
+    const departmentObserver: EmployeeObserver = {
+      onHire: employee => this.#accounting.addToBalance(employee),
+      onRelease: employee => this.#accounting.removeFromBalance(employee),
+    }
 
-    department.setOnReleaseCallback(employee => {
-      this.#accounting.removeFromBalance(employee)
-    })
+    department.addObserver(departmentObserver)
 
     this.#departments.add(department)
     this.#accounting.addToBalance(department)

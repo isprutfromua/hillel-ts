@@ -1,5 +1,3 @@
-import { getRandomID } from '@/helpers/functions'
-import { Contractor, Trainee } from '.'
 import { isContractor } from '../helpers'
 import {
   AccountingSubject,
@@ -8,14 +6,15 @@ import {
 } from '../interfaces'
 import { Employee, EmployeeData } from '../interfaces/OrganizationalUnit'
 import { Budget, Domain, EmployeeStatus } from '../models'
+import { EmployeeFactory } from '@type/lesson06/models/EmployeeFactory.ts'
+import { EmployeeObserver } from '@type/lesson06/interfaces/EmployeeObserver.ts'
 
 export class Department implements OrganizationalUnit, AccountingSubject {
   public accountingID?: number
   public budget: Budget = {} as Budget
 
   #employees: Map<number, Employee> = new Map()
-  #onHireCallback: (employee: Employee) => void = () => {}
-  #onReleaseCallback: (employee: Employee) => void = () => {}
+  #observers: EmployeeObserver[] = []
 
   constructor(
     public name: string,
@@ -43,6 +42,25 @@ export class Department implements OrganizationalUnit, AccountingSubject {
     return this.#calculateBalance()
   }
 
+  addObserver(observer: EmployeeObserver): void {
+    this.#observers.push(observer)
+  }
+
+  removeObserver(observer: EmployeeObserver): void {
+    const index = this.#observers.indexOf(observer)
+    if (index !== -1) {
+      this.#observers.splice(index, 1)
+    }
+  }
+
+  private notifyOnHire(employee: Employee): void {
+    this.#observers.forEach(observer => observer.onHire(employee))
+  }
+
+  private notifyOnRelease(employee: Employee): void {
+    this.#observers.forEach(observer => observer.onRelease(employee))
+  }
+
   #calculateBalance(): number {
     const debit = this.budget.debit.reduce((acc, value) => acc + value, 0)
     const credit = this.budget.credit.reduce((acc, value) => acc + value, 0)
@@ -50,35 +68,22 @@ export class Department implements OrganizationalUnit, AccountingSubject {
     return debit - credit
   }
 
-  setOnHireCallback(callback: (employee: Employee) => void): void {
-    this.#onHireCallback = callback
-  }
-
-  setOnReleaseCallback(callback: (employee: Employee) => void): void {
-    this.#onReleaseCallback = callback
-  }
-
   hireEmployee(traineeInfo: EmployeeData): void {
     const employeeDepartmentInfo = this.#prepareEmployeeData()
     const { name, surname, bankAccount } = traineeInfo
-    const newTrainee = new Trainee(name, surname, bankAccount)
 
+    const newTrainee = EmployeeFactory.createTrainee(name, surname, bankAccount)
     this.#employees.set(employeeDepartmentInfo.id, newTrainee)
-    newTrainee.salary = 1000
+
     newTrainee.assignDepartment(employeeDepartmentInfo)
-    this.#onHireCallback(newTrainee)
+    this.notifyOnHire(newTrainee)
     console.log(
       `${this.name} Department: ${name} ${surname} hired. Please welcome!`,
     )
   }
 
   #prepareEmployeeData(): WorkerDepartmentInfo {
-    let newEmployeeId = getRandomID()
-
-    // regenerate if exist
-    while (this.#employees.has(newEmployeeId)) {
-      newEmployeeId = getRandomID()
-    }
+    const newEmployeeId = EmployeeFactory.generateEmployeeId(this.#employees)
 
     return {
       id: newEmployeeId,
@@ -130,8 +135,11 @@ export class Department implements OrganizationalUnit, AccountingSubject {
     }
 
     const { bankAccount } = employee
-    const newContractor = new Contractor(name, surname, bankAccount)
-    newContractor.salary = newContractor.salary + 500
+    const newContractor = EmployeeFactory.createContractor(
+      name,
+      surname,
+      bankAccount,
+    )
     this.#employees.set(employee.department.id, newContractor)
     console.log(
       `${this.name} Department: Employee type was successfully changed!`,
@@ -179,7 +187,7 @@ export class Department implements OrganizationalUnit, AccountingSubject {
     console.log(
       `${this.name} Department: Employee ${employee.name} ${employee.surname} has been released`,
     )
-    this.#onReleaseCallback(employee)
+    this.notifyOnRelease(employee)
   }
 
   releaseEmployees(): void {
