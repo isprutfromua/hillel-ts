@@ -35,7 +35,7 @@ export class PayOffice extends Department {
       throw 'we don`t have enough tickets'
     } else {
       this._tickets[type] -= count
-      this._sells[type] += this._ticketsPrice[type] * count
+      this._sells[type] += count
     }
   }
 
@@ -55,5 +55,17 @@ export class PayOffice extends Department {
 
   notifyVisitors(action: TPayOfficeAction) {
     this._visitorsQueue.forEach(visitor => visitor.update(action))
+  }
+
+  get visitorsQueue() {
+    return this._visitorsQueue
+  }
+
+  get tickets() {
+    return this._tickets
+  }
+
+  get sells() {
+    return this._sells
   }
 }
