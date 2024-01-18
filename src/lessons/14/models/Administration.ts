@@ -18,7 +18,7 @@ export class Administration extends Department {
   }
 
   hireEmployeeForDepartment(position: string, department: IDepartment) {
-    department.releaseEmployee(position)
+    department.hireEmployee(position)
   }
 
   requestAnimal(animalsDepartment: AnimalsCare, animalKind: string) {
