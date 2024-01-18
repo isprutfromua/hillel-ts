@@ -31,12 +31,16 @@ export class AnimalsCare extends Department {
     const animal = zooAnimals.find(animal => animal.species === animalKind)
     if (animal) {
       this._animals = this._animals.filter(
-        animal => animal.species === animalKind,
+        animal => animal.species !== animalKind,
       )
     } else {
       console.error(`We don\`t have ${animalKind} in our zoo`)
     }
 
     return animal
+  }
+
+  get animals() {
+    return this._animals
   }
 }

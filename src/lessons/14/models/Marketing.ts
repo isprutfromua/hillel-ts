@@ -34,4 +34,8 @@ export class Marketing extends Department {
 
     return Marketing.instance
   }
+
+  get clients() {
+    return this._clients
+  }
 }

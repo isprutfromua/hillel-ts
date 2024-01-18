@@ -60,6 +60,18 @@ export class Accounting extends Department {
   }
 
   async calculateExpenses() {
-    return this.getTotalSalary() + this.getAnimalsFoodCost()
+    const departmentSalary = this.getTotalSalary()
+    const foodCost = this.getAnimalsFoodCost()
+    const employeesSalary = this.employeesList.reduce((acc, employee) => acc + employee.salary, 0)
+
+    return departmentSalary + foodCost + employeesSalary
+  }
+
+  get animalsList() {
+    return this._accountingList.animals
+  }
+
+  get employeesList() {
+    return this._accountingList.employees
   }
 }
